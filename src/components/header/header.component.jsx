@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { connect } from "react-redux";
 import { ReactComponent as Logo } from "../../assets/myb-circle.svg";
 import { auth } from "../../firebase/firebase-utils";
 import "./header.styles.scss";
@@ -31,5 +31,9 @@ const Header = ({ currentUser }) => {
     </div>
   );
 };
+//===here state is pointing to root reducer=====//
+const mapStateProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
 
-export default Header;
+export default connect(mapStateProps)(Header);
